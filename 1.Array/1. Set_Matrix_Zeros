@@ -1,1 +1,26 @@
-
+#include <bits/stdc++.h> 
+void change(vector<vector<int>> &ans, int i, int j,int n,int m)
+{
+	for(int p=0;p<m;p++)
+	{
+		ans[i][p] = 0;
+	}
+    for(int p=0;p<n;p++) 
+	{
+		ans[p][j] = 0;
+    }
+}
+vector<vector<int>> zeroMatrix(vector<vector<int>> &matrix, int n, int m) 
+{
+	// Write your code here.
+	vector<vector<int>> ans = matrix;
+	for(int i=0;i<n;i++)
+	{
+		for(int j=0;j<m;j++)
+		{
+			if(matrix[i][j]==0)
+				change(ans,i,j,n,m);
+		}
+	}
+	return ans;
+}
