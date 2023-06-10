@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+
+int LongestSubsetWithZeroSum(vector < int > arr) 
+{
+  int n = arr.size();
+    map<long long,int> premp;
+    long long sum=0;
+    int maxl = 0;
+    for(int i=0;i<n;i++)
+    {
+        sum+=arr[i];
+        if(sum==0)
+            maxl = max(maxl,i+1);
+        long long rem = sum-0;
+        if(premp.find(rem)!=premp.end())
+        {
+          int l = i-premp[rem];
+          maxl = max(maxl,l);
+        }
+        if(premp.find(sum)==premp.end())
+          premp[sum] = i;
+    }
+    return maxl;
+}
+
+//bruteforce
+//int n = arr.size(),sum = 0,ans = 0,count;
+  // if(n==0)
+  //   return 0;
+  // if(n==1 and arr[0]==0) 
+  //   return 1;
+  // if(find(arr.begin(),arr.end(),0)!=arr.end())
+  //   ans = 1;
+  // for(int i=0;i<n;i++)
+  // {
+  //   count=1;
+  //   sum += arr[i];
+  //   for(int j=i+1;j<n;j++)
+  //   {
+  //     count++;
+  //     sum += arr[j];
+  //     if(sum == 0)
+  //     {
+  //       ans = max(ans,count);
+  //     }
+  //   }
+  //   sum=0;
+  // }
+  // return ans;
