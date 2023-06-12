@@ -1,0 +1,27 @@
+//best
+Node *findMiddle(Node *head) 
+{
+    // Write your code here
+    Node *t=head;
+    Node *m = head;
+    while(t->next!=NULL and t->next->next!=NULL)
+    {
+        m = m->next;
+        t = t->next->next;
+    }
+    if(t->next==NULL)
+        return m;
+    return m->next;
+}
+
+// Node *t=head;
+//     Node *m = head;
+//     int count = 0;
+//     while(t!=NULL)
+//     {
+//         count++;
+//         t = t->next;
+//     }
+//     for(int i=0;i<count/2;i++)
+//         m = m->next;
+//     return m;
