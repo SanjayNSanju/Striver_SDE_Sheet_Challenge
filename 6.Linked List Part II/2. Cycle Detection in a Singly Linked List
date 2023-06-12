@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+bool detectCycle(Node *head)
+{
+    if(head->next==NULL)
+        return false;
+	Node* temp = head;
+    unordered_map<Node*,int> mp;
+    while(temp!=NULL)
+    {
+        mp[temp]++;
+        if(mp[temp]>1)
+            return true;
+        temp = temp->next;
+    }
+    return false;
+}
