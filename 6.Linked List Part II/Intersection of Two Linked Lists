@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+Node* findIntersection(Node *firstHead, Node *secondHead)
+{
+    //Write your code here
+    Node *temp = firstHead;
+    Node *temp1 = secondHead;
+    unordered_map<Node*,int> mp;
+    while(temp!=NULL)
+    {
+        mp[temp]++;
+        temp = temp->next;
+    }
+    while(temp1!=NULL)
+    {
+        mp[temp1]++;
+        if(mp[temp1]>1)
+            return temp1;
+        temp1 = temp1->next;
+    }
+    return NULL;
+}
