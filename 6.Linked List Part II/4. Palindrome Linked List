@@ -1,0 +1,64 @@
+bool isPalindrome(LinkedListNode<int> *head) 
+{
+    if(head==NULL or head->next==NULL)
+        return true;
+    LinkedListNode<int> *s = head;
+    LinkedListNode<int> *f = head;
+    LinkedListNode<int> *temp = head;
+    while(f->next!=NULL and f->next->next!=NULL)
+    {
+        s = s->next;
+        f = f->next->next;
+    }
+    while(f->next!=NULL)
+        f = f->next;
+    LinkedListNode<int> *p = s;
+    LinkedListNode<int> *r = f;
+    LinkedListNode<int> *t;
+    while(p!=NULL)
+    {
+        t = p->next;
+        p->next = r;
+        if(p==s)
+            r = NULL;
+        else
+            r = p;
+        p = t;
+    }
+    t = s->next;
+    while(t!=NULL)
+    {
+        if(temp->data==t->data)
+        {
+            temp = temp->next;
+            t = t->next;
+            continue;
+        }
+        else
+            return false;
+    }
+    return true;
+}
+
+// bool isPalindrome(LinkedListNode<int> *head) 
+// {
+//     // Write your code here.
+//     vector<int> a;
+//     if(head==NULL or head->next==NULL)
+//         return true;
+//     LinkedListNode<int> *temp = head;
+//     while(temp!=NULL)
+//     {
+//         a.push_back(temp->data);
+//         temp = temp->next;
+//     }
+//     int n = a.size();
+//     for(int i=0;i<n;i++)
+//     {
+//         if(a[i]==a[n-i-1])
+//             continue;
+//         else
+//             return false;
+//     }
+//     return true;
+// }
